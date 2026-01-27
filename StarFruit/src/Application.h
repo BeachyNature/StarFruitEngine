@@ -5,16 +5,15 @@
 namespace StarFruit {
 
   class STARFRUIT_API Application {
-
     private:
       int test = 10;
 
     public:
       Application();
-      virtual ~Application(); // Causing issues - need to do need more research
+      virtual ~Application();
       void Run();
-      void Start();
-  
   };
+
+  Application* CreateApplication();
 
 }

@@ -1,5 +1,8 @@
-test/
-glad/
+.vscode/
+bin-int/
+bin/
 KHR/
+glad/
+test/
 *.dll
 *.a

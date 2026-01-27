@@ -15,9 +15,7 @@ class SandBox : public StarFruit::Application
         }
 };
 
-int main() {
-
-    SandBox* sandbox = new SandBox();
-    sandbox->Run();
-    delete sandbox;
+StarFruit::Application* StarFruit::CreateApplication()
+{
+    return new SandBox();
 }
