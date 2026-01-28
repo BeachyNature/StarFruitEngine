@@ -4,12 +4,23 @@ CXXFLAGS := -std=c++20 -Wall -I StarFruit
 BUILD := build
 EXE := app.exe
 
-DLL_DST := ./StarFruit.dll
 DLL := $(BUILD)/StarFruit.dll
 IMPLIB := $(BUILD)/libStarFruit.a
+DLL_DST := ./StarFruit.dll
 
-DLL_SRC := StarFruit/src/Application.cpp
+DLL_SRC := \
+	StarFruit/src/Application.cpp \
+	StarFruit/src/Log.cpp
+DLL_INCLUDES := \
+	-IStarFruit/vendor/spdlog/include \
+	-IStarFruit/include \
+	-IStarFruit \
+
 APP_SRC := Sandbox/src/Sandbox.cpp
+APP_INCLUDES := \
+	-IStarFruit/vendor/spdlog/include \
+	-IStarFruit/include \
+	-IStarFruit \
 
 all: $(EXE)
 
@@ -19,17 +30,14 @@ $(DLL): $(DLL_SRC)
 	$(CXX) -shared $(DLL_SRC) \
 	    -o $(DLL) \
 	    -Wl,--out-implib,$(IMPLIB) \
-		-IStarFruit/include \
-	    -IStarFruit \
+		$(DLL_INCLUDES)
 
 # ---------- EXE ----------
 $(EXE): $(APP_SRC) $(DLL)
 	$(CXX) $(APP_SRC) \
 	    -o $(EXE) \
 	    -Wl,-subsystem,console \
-	    -IStarFruit/include \
-		-IStarFruit/src \
-		-IStarFruit \
+		$(APP_INCLUDES) \
 	    -L$(BUILD) -lStarFruit
 	cp $(DLL) $(DLL_DST)
 

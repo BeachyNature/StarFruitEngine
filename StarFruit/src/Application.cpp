@@ -1,6 +1,5 @@
 #define STARFRUIT_EXPORTS
 #include "Application.h"
-#include <iostream>
 #include <stdio.h>
 
 namespace StarFruit {

@@ -4,5 +4,6 @@ bin/
 KHR/
 glad/
 test/
+*.exe
 *.dll
 *.a
