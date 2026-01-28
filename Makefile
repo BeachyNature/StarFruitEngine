@@ -4,9 +4,8 @@ CXXFLAGS := -std=c++20 -Wall -I StarFruit
 BUILD := build
 EXE := app.exe
 
-DLL := $(BUILD)/StarFruit.dll
 IMPLIB := $(BUILD)/libStarFruit.a
-DLL_DST := ./StarFruit.dll
+DLL := ./StarFruit.dll
 
 DLL_SRC := \
 	StarFruit/src/Application.cpp \
@@ -39,7 +38,6 @@ $(EXE): $(APP_SRC) $(DLL)
 	    -Wl,-subsystem,console \
 		$(APP_INCLUDES) \
 	    -L$(BUILD) -lStarFruit
-	cp $(DLL) $(DLL_DST)
 
 clean:
 	rm -rf $(BUILD) *.exe *.dll

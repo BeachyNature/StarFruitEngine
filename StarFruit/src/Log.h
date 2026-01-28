@@ -1,7 +1,8 @@
 #pragma once
 
-#include <memory>
 #include <Core.h>
+#include <memory>
+#include <stdio.h>
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
@@ -17,7 +18,6 @@ namespace StarFruit {
         private:
             static std::shared_ptr<spdlog::logger> s_CoreLogger;
             static std::shared_ptr<spdlog::logger> s_ClientLogger;
-
     };
 
 }

@@ -19,4 +19,5 @@ namespace StarFruit {
     {
         while(true);
     }
+
 }
