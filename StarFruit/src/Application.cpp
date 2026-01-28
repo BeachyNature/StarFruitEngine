@@ -18,7 +18,9 @@ namespace StarFruit {
     void Application::Run()
     {
         WindowResizeEvent e(1200, 720);
-        SF_CORE_TRACE(e);
+        if (e.IsInCategory(EventCategoryApp)){
+            SF_CORE_TRACE(e);
+        }
 
         while(true);
     }
