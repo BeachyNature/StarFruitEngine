@@ -7,12 +7,12 @@ class SandBox : public StarFruit::Application
     public:
         SandBox() 
         {
-            SF_CLIENT_INFO("Initialized Client Logger!");
+            SF_INFO("Initialized Client Logger...");
         }
 
         ~SandBox()
         {
-            SF_CLIENT_INFO("Closing SandBox Client..");
+            SF_INFO("Closing SandBox Client...");
         }
 };
 

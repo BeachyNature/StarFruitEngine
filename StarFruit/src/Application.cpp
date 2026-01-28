@@ -1,13 +1,13 @@
 #define STARFRUIT_EXPORTS
 #include "Application.h"
-#include <stdio.h>
+#include "events/ApplicationEvent.h"
+#include "Log.h"
 
 namespace StarFruit {
 
     Application::Application()
     {
-        printf("Welcome to Starfruit Engine!\n");
-        printf("Lets get started!\n");
+        SF_CORE_INFO("Welcome to Starfruit Engine!");
     }
 
     Application::~Application()
@@ -17,6 +17,9 @@ namespace StarFruit {
 
     void Application::Run()
     {
+        WindowResizeEvent e(1200, 720);
+        SF_CORE_TRACE(e);
+
         while(true);
     }
 

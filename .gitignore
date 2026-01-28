@@ -6,4 +6,5 @@ glad/
 test/
 *.exe
 *.dll
+*.lua
 *.a

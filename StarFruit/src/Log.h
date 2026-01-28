@@ -4,6 +4,7 @@
 #include <memory>
 #include <stdio.h>
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace StarFruit {
@@ -30,8 +31,8 @@ namespace StarFruit {
 #define SF_CORE_TRACE(...) ::StarFruit::Log::GetCoreLogger()->trace(__VA_ARGS__)
 
 // Client Logging Macros
-#define SF_CLIENT_FATAL(...) ::StarFruit::Log::GetClientLogger()->fatal(__VA_ARGS__)
-#define SF_CLIENT_ERROR(...) ::StarFruit::Log::GetClientLogger()->error(__VA_ARGS__)
-#define SF_CLIENT_WARN(...)  ::StarFruit::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define SF_CLIENT_INFO(...)  ::StarFruit::Log::GetClientLogger()->info(__VA_ARGS__)
-#define SF_CLIENT_TRACE(...) ::StarFruit::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define SF_FATAL(...) ::StarFruit::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define SF_ERROR(...) ::StarFruit::Log::GetClientLogger()->error(__VA_ARGS__)
+#define SF_WARN(...)  ::StarFruit::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define SF_INFO(...)  ::StarFruit::Log::GetClientLogger()->info(__VA_ARGS__)
+#define SF_TRACE(...) ::StarFruit::Log::GetClientLogger()->trace(__VA_ARGS__)

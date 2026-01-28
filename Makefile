@@ -13,12 +13,14 @@ DLL_SRC := \
 DLL_INCLUDES := \
 	-IStarFruit/vendor/spdlog/include \
 	-IStarFruit/include \
+	-IStarFruit/events \
 	-IStarFruit \
 
 APP_SRC := Sandbox/src/Sandbox.cpp
 APP_INCLUDES := \
 	-IStarFruit/vendor/spdlog/include \
 	-IStarFruit/include \
+	-IStarFruit/events \
 	-IStarFruit \
 
 all: $(EXE)

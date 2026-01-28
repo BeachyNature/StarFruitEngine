@@ -7,7 +7,7 @@ extern StarFruit::Application* StarFruit::CreateApplication();
 int main() {
 
     StarFruit::Log::Init();
-    SF_CORE_INFO("Initialized Core Logger!");
+    SF_CORE_INFO("Initialized Core Logger...");
 
     auto app = StarFruit::CreateApplication();  
     app->Run();
