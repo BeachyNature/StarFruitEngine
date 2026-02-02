@@ -1,6 +1,5 @@
 #define STARFRUIT_EXPORTS
 #include <StarFruit.h>
-#include <stdio.h>
 
 class SandBox : public StarFruit::Application
 {

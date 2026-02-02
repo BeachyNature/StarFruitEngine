@@ -7,4 +7,5 @@ test/
 *.exe
 *.dll
 *.lua
+&.ghc
 *.a

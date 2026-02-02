@@ -1,7 +1,8 @@
 #define STARFRUIT_EXPORTS
+#include "sfpch.h"
+#include "Log.h"
 #include "Application.h"
 #include "events/ApplicationEvent.h"
-#include "Log.h"
 
 namespace StarFruit {
 

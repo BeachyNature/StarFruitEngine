@@ -7,39 +7,44 @@ EXE := app.exe
 IMPLIB := $(BUILD)/libStarFruit.a
 DLL := ./StarFruit.dll
 
-DLL_SRC := \
-	StarFruit/src/Application.cpp \
-	StarFruit/src/Log.cpp
-DLL_INCLUDES := \
-	-IStarFruit/vendor/spdlog/include \
-	-IStarFruit/include \
-	-IStarFruit/events \
-	-IStarFruit \
+DLL_SRC :=  $(wildcard StarFruit/src/*.cpp)
+APP_SRC := $(wildcard Sandbox/src/*.cpp)
 
-APP_SRC := Sandbox/src/Sandbox.cpp
-APP_INCLUDES := \
-	-IStarFruit/vendor/spdlog/include \
-	-IStarFruit/include \
-	-IStarFruit/events \
-	-IStarFruit \
+STAR_INCLUDE := \
+    -IStarFruit/vendor/spdlog/include \
+    -IStarFruit/include \
+    -IStarFruit/events \
+    -IStarFruit \
+
+# Precompiled header
+PCH_SRC := StarFruit/sfpch.cpp
+PCH_H := StarFruit/sfpch.h
+PCH := $(BUILD)/sfpch.h.gch
 
 all: $(EXE)
 
+# ---------- Precompiled Header ----------
+$(PCH): $(PCH_SRC) $(PCH_H)
+	mkdir -p $(BUILD)
+	$(CXX) $(CXXFLAGS) -o $@ -c $(PCH_SRC)
+
 # ---------- DLL ----------
-$(DLL): $(DLL_SRC)
+$(DLL): $(DLL_SRC) $(PCH)
 	mkdir -p $(BUILD)
 	$(CXX) -shared $(DLL_SRC) \
 	    -o $(DLL) \
 	    -Wl,--out-implib,$(IMPLIB) \
-		$(DLL_INCLUDES)
+	    $(STAR_INCLUDE) \
+	    $(CXXFLAGS)
 
 # ---------- EXE ----------
-$(EXE): $(APP_SRC) $(DLL)
+$(EXE): $(APP_SRC) $(DLL) $(PCH)
 	$(CXX) $(APP_SRC) \
 	    -o $(EXE) \
 	    -Wl,-subsystem,console \
-		$(APP_INCLUDES) \
-	    -L$(BUILD) -lStarFruit
+	    $(STAR_INCLUDE) \
+	    -L$(BUILD) -lStarFruit \
+	    $(CXXFLAGS)
 
 clean:
 	rm -rf $(BUILD) *.exe *.dll

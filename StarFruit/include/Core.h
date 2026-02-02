@@ -9,10 +9,5 @@
     #define STARFRUIT_API
 #endif
 
-// Include Sources
-#include <string>
-#include <sstream>
-#include <functional>
-
 // Macros
 #define BIT(x) (1 << x)

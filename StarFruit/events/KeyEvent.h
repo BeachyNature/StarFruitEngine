@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sfpch.h"
 #include <Event.h>
 
 namespace StarFruit 
